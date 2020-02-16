@@ -13,6 +13,7 @@ import android.widget.TextView
 class MainActivity : BaseActivity() {
 
     private lateinit var btn1: Button
+    private lateinit var btn2: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setThisUpWindow()
@@ -21,8 +22,8 @@ class MainActivity : BaseActivity() {
 
         val textView = findViewById<TextView>(R.id.txt)
         btn1 = findViewById(R.id.btn1)
+        btn2 = findViewById(R.id.btn2)
         val imgView = findViewById<ImageView>(R.id.img)
-
 
         btn1.setOnClickListener {
             val intent = Intent()
@@ -32,6 +33,15 @@ class MainActivity : BaseActivity() {
             val transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(
                 this@MainActivity,
                 pair1, pair2
+            )
+            startActivity(intent, transitionActivityOptions.toBundle())
+        }
+
+        btn2.setOnClickListener {
+            val intent = Intent()
+            intent.setClass(this, ThirdActivity::class.java)
+            val transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(
+                this@MainActivity
             )
             startActivity(intent, transitionActivityOptions.toBundle())
         }
